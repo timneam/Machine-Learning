@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Heart Failure Prediction</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <style>
+          body {
+              background-color: pink; /* For browsers that do not support gradients */
+              background-image: linear-gradient(pink, white);
+          }
+          
+      </style>
+  </head>
+    
+<body style="text-align:center;">
+    <h1>Heart Failure Prediction</h1>
+    <h2>Prediction Form</h2>
+    <p>Enter the values below to predict if heart failure can cause death<p>
+
+    <div class="container" style="text-align:center;">
+    
+    <div class="row">
+        <div class="col-lg-4" style="text-align:center; margin-top: 15px;">
+            <img src="https://image.freepik.com/free-vector/strong-cute-healthy-happy-human-heart-organ-character-set_92289-43.jpg" width=300px;/>
+        <br><br>
+        <h5>Happy Heart Family</h5></div>
+        
+            <div class="col-lg-8">
+                <div class="container" style="width: 1200px;" >
+                    <form action="/predict"method="post" style="text-align:center;">
+                            <div class="form-group">
+                              <label class="control-label col-sm-2" for="age">Age:</label>
+                              <div class="col-sm-5">
+                                <input type="text" class="form-control" id="age" name="age">
+                              </div>
+                            </div>
+                        
+                            <br>
+                            <br>
+                            <br>
+                            <div class="form-group">
+                              <label class="control-label col-sm-2" for="anaemia">Anaemia:</label>
+                              <div class="col-sm-5">
+                                    <input type="radio" name="anaemia" value="0"><label for="anaemia">No</label>
+                                    <input type="radio" name="anaemia" value="1"><label for="anaemia">Yes</label>
+                              </div>
+                            </div>
+                        
+                            <br>
+                            <br>
+                            <div class="form-group">
+                              <label class="control-label col-sm-2" for="creatinine_phosphokinase">Creatinine Phosphokinase:</label>
+                              <div class="col-sm-5">
+                                    <p>Enter: Less than 10 (Low), 10 -120 (Medium) , more than 130 (High) </p>
+                                    <p>Measurement: Micrograms per liter (mcg/L)</p>
+                                <input type="text" class="form-control" id="creatinine_phosphokinase" name="creatinine_phosphokinase">
+                              </div>
+                            </div>
+                        
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <div class="form-group">
+                              <label class="control-label col-sm-2" for="platelets">Platelets:</label>
+                              <div class="col-sm-5">
+                                    <p>Enter: Less than 150,000 (Low), 150,000 to 450,000 (Medium), more than 450,000 (High)</p>
+                                    <p>Measurement: Platelets per microliter of blood</p>
+                                <input type="text" class="form-control" id="platelets" name="platelets">
+                              </div>
+                            </div>
+                        
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <div class="form-group">
+                              <label class="control-label col-sm-2" for="serum_sodium">Serum Sodium:</label>
+                              <div class="col-sm-5">
+                                    <p>Enter: Less than 135 (Low), 135 and 145 (Medium), more than 145 (High).</p>
+                                    <p>Measurement: Milliequivalents per liter (mEq/L)</p>
+                                <input type="text" class="form-control" id="serum_sodium" name="serum_sodium">
+                              </div>
+                            </div>
+                        
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>                    
+                            <div class="form-group">
+                              <label class="control-label col-sm-2" for="smoking">Smoking:</label>
+                              <div class="col-sm-5">
+                                    <input type="radio" name="smoking" value="0"><label for="smoking">No</label>
+                                    <input type="radio" name="smoking" value="1"><label for="smoking">Yes</label>
+                              </div>
+                            </div>
+                        
+                            <br>
+                            <br>
+                            <div class="form-group">
+                              <label class="control-label col-sm-2" for="time">Time:</label>
+                              <div class="col-sm-5">
+                                    <p>Enter: Number of days taken to visit hospital</p>
+                                    <input type="text" class="form-control" id="time" name="time">
+                              </div>
+                            </div>
+                        
+                            <br>
+                            <br>
+                            <br>
+                            <div class="form-group">
+                              <label class="control-label col-sm-2" for="ejection_fraction_bin_custom_label">Ejection Fraction:</label>
+                              <div class="col-sm-5">
+                                <input type="radio" name="ejection_fraction_bin_custom_label" value="1">
+                                <label for="ejection_fraction_bin_custom_label">1 for Low (0 - 35)</label><br>
+                                <input type="radio" name="ejection_fraction_bin_custom_label" value="2">
+                                <label for="ejection_fraction_bin_custom_label">2 for Low-Med (35 - 39)</label><br>
+                                <input type="radio" name="ejection_fraction_bin_custom_label" value="3">
+                                <label for="ejection_fraction_bin_custom_label">3 for Medium (40)</label><br>
+                                <input type="radio" name="ejection_fraction_bin_custom_label" value="4">
+                                <label for="ejection_fraction_bin_custom_label">4 for Med-High (41 - 55)</label><br>
+                                <input type="radio" name="ejection_fraction_bin_custom_label" value="5">
+                                <label for="ejection_fraction_bin_custom_label">5 for High (55 - 70)</label>
+                              </div>
+                            </div>
+                        
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <div class="form-group">
+                              <label class="control-label col-sm-2" for="serum_creatinine_bin_custom_label">Serum Creatinine:</label>
+                              <div class="col-sm-5">
+                                <input type="radio" name="serum_creatinine_bin_custom_label" value="1">
+                                <label for="serum_creatinine_bin_custom_label">Low (0 - 0.6)</label><br>
+                                <input type="radio" name="serum_creatinine_bin_custom_label" value="2">
+                                <label for="serum_creatinine_bin_custom_label">2 for Medium(0.6 - 1.2)</label><br>
+                                <input type="radio" name="serum_creatinine_bin_custom_label" value="3">
+                                <label for="serum_creatinine_bin_custom_label">3 for High (1.2 - 5.0)</label><br>
+                              </div>
+                            </div>
+                        
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="col-lg-9">
+                        <button class="btn btn-primary" type="submit">Predict</button> 
+                            <p>{{ heart_failure_prediction }}</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+                    
+                    
+                    
+                    
+                   
